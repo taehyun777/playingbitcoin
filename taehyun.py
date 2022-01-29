@@ -13,7 +13,7 @@ def post_message(token, channel, text):
         headers={"Authorization": "Bearer "+token},
         data={"channel": channel,"text": text}
     )
-
+    
 def get_target_price(ticker, k):
     """변동성 돌파 전략으로 매수 목표가 조회"""
     df = pyupbit.get_ohlcv(ticker, interval="day", count=2)
@@ -313,7 +313,87 @@ while True:
             btc = get_balance("XLM")
             if btc > 0.00008:
                 sell_result = upbit.sell_market_order("KRW-XLM", btc*0.9995)
-                post_message(myToken,"#crypto", "XLM buy : " +str(sell_result)),                                                                    
+                post_message(myToken,"#crypto", "XLM buy : " +str(sell_result)),
+                
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-BTC", 0.5)
+            ma15 = get_ma15("KRW-BTC")
+            current_price = get_current_price("KRW-BTC")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("BTC")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-BTC", krw*0.9995)
+                    post_message(myToken,"#crypto", "BTC buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("BTC")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-BTC", btc*0.9995)
+                post_message(myToken,"#crypto", "BTC buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-ETH", 0.5)
+            ma15 = get_ma15("KRW-ETH")
+            current_price = get_current_price("KRW-ETH")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("ETH")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-ETH", krw*0.9995)
+                    post_message(myToken,"#crypto", "ETH buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("ETH")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-ETH", btc*0.9995)
+                post_message(myToken,"#crypto", "ETH buy : " +str(sell_result)),
+                
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-DAWN", 0.5)
+            ma15 = get_ma15("KRW-DAWN")
+            current_price = get_current_price("KRW-DAWN")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("DAWN")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-DAWN", krw*0.9995)
+                    post_message(myToken,"#crypto", "DAWN buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("DAWN")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-DAWN", btc*0.9995)
+                post_message(myToken,"#crypto", "DAWN buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-PUND", 0.5)
+            ma15 = get_ma15("KRW-PUND")
+            current_price = get_current_price("KRW-PUND")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("PUND")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-PUND", krw*0.9995)
+                    post_message(myToken,"#crypto", "PUND buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("PUND")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-PUND", btc*0.9995)
+                post_message(myToken,"#crypto", "PUND buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-WEMIX", 0.5)
+            ma15 = get_ma15("KRW-WEMIX")
+            current_price = get_current_price("KRW-WEMIX")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("WEMIX")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-WEMIX", krw*0.9995)
+                    post_message(myToken,"#crypto", "WEMIX buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("WEMIX")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-WEMIX", btc*0.9995)
+                post_message(myToken,"#crypto", "WEMIX buy : " +str(sell_result)),                                                                                                        
 
         time.sleep(1)
     except Exception as e:
