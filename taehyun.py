@@ -49,8 +49,8 @@ def predict_price(ticker):
         closeDf = forecast[forecast['ds'] == data.iloc[-1]['ds'].replace(hour=9)]
     closeValue = closeDf['yhat'].values[0]
     predicted_close_price = closeValue
-predict_price("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST")
-schedule.every().hour.do(lambda: predict_price("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST"))
+predict_price("KRW-BTC")
+schedule.every().hour.do(lambda: predict_price("KRW-BTC"))
 # 로그인
 upbit = pyupbit.Upbit(access, secret)
 print("autotrade start")
@@ -58,20 +58,20 @@ print("autotrade start")
 while True:
     try:
         now = datetime.datetime.now()
-        start_time = get_start_time("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST")
+        start_time = get_start_time("KRW-BTC")
         end_time = start_time + datetime.timedelta(days=1)
         schedule.run_pending()
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST", 0.5)
-            current_price = get_current_price("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST")
+            target_price = get_target_price("KRW-BTC", 0.5)
+            current_price = get_current_price("KRW-BTC")
             if target_price < current_price and current_price < predicted_close_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    upbit.buy_market_order("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST", krw*0.9995)
+                    upbit.buy_market_order("KRW-BTC", krw*0.9995)
         else:
-            btc = get_balance("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST")
+            btc = get_balance("KRW-BTC")
             if btc > 0.00008:
-                upbit.sell_market_order("KRW-BTC","KRW-SAND","KRW-FLOW","KRW-ETH","KRW-AXS","KRW-WEMIX","KRW-ATOM","KRW-XRP","KRW-MANA","KRW-GAS","KRW-SOL","KRW-ONG","KRW-BORA","KRW-MATIC","KRW-DAWN","KRW-POWR","KRW-DOGE","KRW-LINK","KRW-NU","KRW-NEAR","KRW-STX","KRW-XTZ","KRW-DOT","KRW-PLA","KRW-SBD","KRW-ENJ","KRW-ADA","KRW-WAXP","KRW-SXP","KRW-VET","KRW-CHZ","KRW-EOS","KRW-BTT","KRW-ORBS","KRW-AQT","KRW-ALGO","KRW-MILK","KRW-HIVE","KRW-TON","KRW-STPT","KRW-STEEM","KRW-STORJ","KRW-GLM","KRW-KAVA","KRW-ONT","KRW-BCH","KRW-ELF","KRW-THETA","KRW-NEO","KRW-XLM","KRW-SNT","KRW-STRK","KRW-IOTA","KRW-IOST","KRW-ZRX","KRW-QKC","KRW-REP","KRW-JST", btc*0.9995)
+                upbit.sell_market_order("KRW-BTC", btc*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
