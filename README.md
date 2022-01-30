@@ -57,3 +57,7 @@ pip3 install pystan==2.19.1.1
 pip3 install convertdate
 
 pip3 install fbprophet
+
+ubuntu 서버 한국 시간으로 설정 :
+
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
