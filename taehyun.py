@@ -3,8 +3,8 @@ import pyupbit
 import datetime
 import schedule
 from fbprophet import Prophet
-access = "Uxcrs8DuqTZ6BuoJWHJsJqTR4DbYjpvw8TU19VPE"
-secret = "hleUvFkjslG8o15GiS092opN7Co5SGgZz3CbSL8X"
+access = "PUhkUSzM617z6Km5gStxGJwEzgGO8xcDpF8u727o"
+secret = "BPxLDHkSOMZT4L0BTYYxQW6oMg4oHoK8UsGTjjol"
 def get_target_price(ticker, k):
     """변동성 돌파 전략으로 매수 목표가 조회"""
     df = pyupbit.get_ohlcv(ticker, interval="day", count=2)
