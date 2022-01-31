@@ -3,8 +3,8 @@ import pyupbit
 import datetime
 import requests
 
-access = "Uxcrs8DuqTZ6BuoJWHJsJqTR4DbYjpvw8TU19VPE"
-secret = "hleUvFkjslG8o15GiS092opN7Co5SGgZz3CbSL8X"
+access = "9wburk8kjhwvHy0Hq5ZVgwM6pNux1Q9BUgJyQoI0"
+secret = "BL6GmlFYpaUWu0yit0ayxoeQ160vSeBrzFkj5EjJ"
 myToken = "xoxb-2912010894871-2928928134996-vffa16iIEV4YLLe55JwE1iGW"
 
 def post_message(token, channel, text):
@@ -75,6 +75,38 @@ while True:
                 sell_result = upbit.sell_market_order("KRW-DOGE", btc*0.9995)
                 post_message(myToken,"#crypto", "DOGE buy : " +str(sell_result)),
 
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-BTC", 0.5)
+            ma15 = get_ma15("KRW-BTC")
+            current_price = get_current_price("KRW-BTC")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("KRW")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-BTC", krw*0.9995)
+                    post_message(myToken,"#crypto", "BTC buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("BTC")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-BTC", btc*0.9995)
+                post_message(myToken,"#crypto", "BTC buy : " +str(sell_result)),
+                
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("ETH-", 0.5)
+            ma15 = get_ma15("KRW-ETH")
+            current_price = get_current_price("KRW-ETH")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("KRW")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-ETH", krw*0.9995)
+                    post_message(myToken,"#crypto", "ETH buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("ETH")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-ETH", btc*0.9995)
+                post_message(myToken,"#crypto", "ETH buy : " +str(sell_result)),        
+                
         if start_time < now < end_time - datetime.timedelta(seconds=10):
             target_price = get_target_price("KRW-XRP", 0.5)
             ma15 = get_ma15("KRW-XRP")
