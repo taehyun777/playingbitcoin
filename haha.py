@@ -233,7 +233,87 @@ while True:
             btc = get_balance("SOL")
             if btc > 0.00008:
                 sell_result = upbit.sell_market_order("KRW-SOL", btc*0.9995)
-                post_message(myToken,"#crypto", "SOL buy : " +str(sell_result)),          
+                post_message(myToken,"#crypto", "SOL buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-ADA", 0.5)
+            ma15 = get_ma15("KRW-ADA")
+            current_price = get_current_price("KRW-ADA")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("ADA")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-ADA", krw*0.9995)
+                    post_message(myToken,"#crypto", "ADA buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("ADA")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-ADA", btc*0.9995)
+                post_message(myToken,"#crypto", "ADA buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-MATIC", 0.5)
+            ma15 = get_ma15("KRW-MATIC")
+            current_price = get_current_price("KRW-MATIC")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("MATIC")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-MATIC", krw*0.9995)
+                    post_message(myToken,"#crypto", "MATIC buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("MATIC")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-MATIC", btc*0.9995)
+                post_message(myToken,"#crypto", "MATIC buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-AERGO", 0.5)
+            ma15 = get_ma15("KRW-AERGO")
+            current_price = get_current_price("KRW-AERGO")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("AERGO")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-AERGO", krw*0.9995)
+                    post_message(myToken,"#crypto", "AERGO buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("AERGO")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-AERGO", btc*0.9995)
+                post_message(myToken,"#crypto", "AERGO buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-LINK", 0.5)
+            ma15 = get_ma15("KRW-LINK")
+            current_price = get_current_price("KRW-LINK")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("LINK")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-LINK", krw*0.9995)
+                    post_message(myToken,"#crypto", "LINK buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("LINK")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-LINK", btc*0.9995)
+                post_message(myToken,"#crypto", "LINK buy : " +str(sell_result)),
+
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-HUNT", 0.5)
+            ma15 = get_ma15("KRW-HUNT")
+            current_price = get_current_price("KRW-HUNT")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("HUNT")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-HUNT", krw*0.9995)
+                    post_message(myToken,"#crypto", "HUNT buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("HUNT")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-HUNT", btc*0.9995)
+                post_message(myToken,"#crypto", "HUNT buy : " +str(sell_result)),                              
 
         time.sleep(1)
     except Exception as e:
