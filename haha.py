@@ -137,7 +137,23 @@ while True:
             btc = get_balance("BTC")
             if btc > 0.00008:
                 sell_result = upbit.sell_market_order("KRW-BTC", btc*0.9995)
-                post_message(myToken,"#crypto", "BTC buy : " +str(sell_result))                                                                                                                
+                post_message(myToken,"#crypto", "BTC buy : " +str(sell_result)),
+                
+        if start_time < now < end_time - datetime.timedelta(seconds=10):
+            target_price = get_target_price("KRW-FLOW", 0.5)
+            ma15 = get_ma15("KRW-FLOW")
+            current_price = get_current_price("KRW-FLOW")
+            if target_price < current_price and ma15 < current_price:
+                krw = get_balance("FLOW")
+                if krw > 5000:
+                    buy_result = upbit.buy_market_order("KRW-FLOW", krw*0.9995)
+                    post_message(myToken,"#crypto", "FLOW buy : " +str(buy_result))
+                    
+        else:
+            btc = get_balance("FLOW")
+            if btc > 0.00008:
+                sell_result = upbit.sell_market_order("KRW-FLOW", btc*0.9995)
+                post_message(myToken,"#crypto", "FLOW buy : " +str(sell_result)),                               
 
         time.sleep(1)
     except Exception as e:
