@@ -313,7 +313,7 @@ while True:
             btc = get_balance("HUNT")
             if btc > 0.00008:
                 sell_result = upbit.sell_market_order("KRW-HUNT", btc*0.9995)
-                post_message(myToken,"#crypto", "HUNT buy : " +str(sell_result)),                              
+                post_message(myToken,"#crypto", "HUNT buy : " +str(sell_result))                            
 
         time.sleep(1)
     except Exception as e:
