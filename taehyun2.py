@@ -169,23 +169,7 @@ while True:
             btc = get_balance("ADA")
             if btc > 0.00008:
                 sell_result = upbit.sell_market_order("KRW-ADA", btc*0.9995)
-                post_message(myToken,"#crypto", "ADA buy : " +str(sell_result)),
-
-        if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-ONG", 0.5)
-            ma15 = get_ma15("KRW-ONG")
-            current_price = get_current_price("KRW-ONG")
-            if target_price < current_price and ma15 < current_price:
-                krw = get_balance("KRW")
-                if krw > 5000:
-                    buy_result = upbit.buy_market_order("KRW-ONG", krw*0.9995)
-                    post_message(myToken,"#crypto", "ONG buy : " +str(buy_result))
-                    
-        else:
-            btc = get_balance("ONG")
-            if btc > 0.00008:
-                sell_result = upbit.sell_market_order("KRW-ONG", btc*0.9995)
-                post_message(myToken,"#crypto", "ONG buy : " +str(sell_result)),        
+                post_message(myToken,"#crypto", "ADA buy : " +str(sell_result)),       
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
             target_price = get_target_price("KRW-EOS", 0.5)
