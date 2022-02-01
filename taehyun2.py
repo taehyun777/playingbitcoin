@@ -92,7 +92,7 @@ while True:
                 post_message(myToken,"#crypto", "BTC buy : " +str(sell_result)),
                 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("ETH-", 0.5)
+            target_price = get_target_price("KRW-ETH", 0.5)
             ma15 = get_ma15("KRW-ETH")
             current_price = get_current_price("KRW-ETH")
             if target_price < current_price and ma15 < current_price:
