@@ -3,9 +3,9 @@ import pyupbit
 import datetime
 import requests
 
-access = "9wburk8kjhwvHy0Hq5ZVgwM6pNux1Q9BUgJyQoI0"
-secret = "BL6GmlFYpaUWu0yit0ayxoeQ160vSeBrzFkj5EjJ"
-myToken = "xoxb-2912010894871-2928928134996-vffa16iIEV4YLLe55JwE1iGW"
+access = "opbQhxfIbyYUcCl1XxKzFuUQNIRc19dckDUlYbup"
+secret = "DTZPBPXoWRnxrc03jOmWvzk7iNxEUD6tfr15H3K1"
+myToken = "xoxb-2912010894871-2928928134996-LisxWzc5nf48zLxO19taoFk9"
 
 def post_message(token, channel, text):
     """슬랙 메시지 전송"""
